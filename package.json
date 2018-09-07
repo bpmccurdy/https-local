@@ -1,0 +1,32 @@
+{
+  "name": "https-local",
+  "version": "1.0.0",
+  "description": "A Certificate Authority for Localhost",
+  "main": "index.js",
+  "author": "Ben McCurdy <bpmccurdy@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "standard && node test.js"
+  },
+  "dependencies": {
+    "mkdirp": "^0.5.1",
+    "node-forge": "^0.7.6"
+  },
+  "devDependencies": {
+    "standard": "^12.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bpmccurdy/https-local.git"
+  },
+  "keywords": [
+    "localhost",
+    "https",
+    "local",
+    "ssl"
+  ],
+  "bugs": {
+    "url": "https://github.com/bpmccurdy/https-local/issues"
+  },
+  "homepage": "https://github.com/bpmccurdy/https-local#readme"
+}
