@@ -97,7 +97,7 @@ function install (config) {
       value: 'localhost'
     }]
   }]
-  if (config.altNames) setExtensions[3].altNames.concat(config.altNames)
+  if (config.altNames) setExtensions[3].altNames = setExtensions[3].altNames.concat(config.altNames)
   localhostCert.setExtensions(setExtensions)
   localhostCert.sign(rootKey.privateKey, forge.md.sha256.create())
   var localhostCertPem = forge.pki.certificateToPem(localhostCert)
