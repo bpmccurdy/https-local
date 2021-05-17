@@ -92,12 +92,10 @@ function install (config) {
     clientAuth: true
   }, {
     name: 'subjectAltName',
-    altNames: [
-      {
-        type: 2,
-        value: 'localhost'
-      }
-    ]
+    altNames: [{
+      type: 2,
+      value: 'localhost'
+    }]
   }]
   if (config.altNames) setExtensions[3].altNames.concat(config.altNames)
   localhostCert.setExtensions(setExtensions)
