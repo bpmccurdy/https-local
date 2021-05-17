@@ -14,3 +14,17 @@ A node module to automatically run https on localhost
     })
     
 The first time this is run it will install a root certificate and localhost certificare in the folder `~/.https-local`. On MacOS the root certificate will be imported into your keychain and you will be prompted for your password. On other operating systems you need to install the `root-cert.pem` manually for your system.
+
+### Optional config parameters
+Allows to extend the altNames values
+```
+require('https-local').options({
+  altNames: [{
+      type: 2,
+      value: '192.168.1.1'
+    },{
+      type: 7,
+      ip: '192.168.1.1'
+    }]
+})
+```
