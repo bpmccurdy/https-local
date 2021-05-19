@@ -22,7 +22,7 @@ function addTrustedRootCert () {
   }
 }
 
-function install () {
+function install (config) {
   mkdirp(location)
 
   var validity = {}
@@ -78,7 +78,7 @@ function install () {
   localhostCert.validity = validity
   localhostCert.setSubject([localhostCommonName])
   localhostCert.setIssuer([rootCommonName])
-  localhostCert.setExtensions([{
+  let setExtensions = [{
     name: 'keyUsage',
     critical: true,
     digitalSignature: true,
@@ -96,7 +96,9 @@ function install () {
       type: 2,
       value: 'localhost'
     }]
-  }])
+  }]
+  if (config.altNames) setExtensions[3].altNames = setExtensions[3].altNames.concat(config.altNames)
+  localhostCert.setExtensions(setExtensions)
   localhostCert.sign(rootKey.privateKey, forge.md.sha256.create())
   var localhostCertPem = forge.pki.certificateToPem(localhostCert)
 
@@ -110,9 +112,9 @@ function install () {
   console.log(location + '/root-cert.pem')
 }
 
-function options () {
+function options (config) {
   if (!isInstalled()) {
-    install()
+    install(config)
     addTrustedRootCert()
   }
   return {
