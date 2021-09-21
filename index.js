@@ -28,7 +28,7 @@ function install (config) {
   var validity = {}
   validity.notBefore = new Date()
   validity.notAfter = new Date()
-  validity.notAfter.setFullYear(validity.notBefore.getFullYear() + 25)
+  validity.notAfter.setFullYear(validity.notBefore.getFullYear() + 1)
 
   // CREATE ROOT KEY
   var rootKey = forge.pki.rsa.generateKeyPair(2048)
